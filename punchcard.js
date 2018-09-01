@@ -42,6 +42,7 @@ function signOut()
 
 function checkLocation()
 {
+    alert("HELLO");
     navigator.geolocation.getCurrentPosition(
         function(posi)
         {
