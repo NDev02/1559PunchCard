@@ -17,6 +17,11 @@ html
     color: white;
 }
 
+body
+{
+    margin-top: 1em;
+}
+
 button
 {
     background: #fbab1a;
