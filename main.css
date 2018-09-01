@@ -17,14 +17,6 @@ html
     color: white;
 }
 
-body
-{
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
-    height: 100%;
-    margin: 0;
-}
-
 button
 {
     background: #fbab1a;
