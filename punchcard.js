@@ -42,7 +42,12 @@ function signOut()
 
 function checkLocation()
 {
-    navigator.permissions.query({name:'geolocation'});
+    const permissionsToRequest = 
+    {
+      permissions: ["geolocation"],
+      origins: ["https://1559punchcard.tk/"]
+    }
+    browser.permissions.request(permissionsToRequest);
     navigator.geolocation.getCurrentPosition(
         function(posi)
         {
