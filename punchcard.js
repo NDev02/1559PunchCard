@@ -42,7 +42,6 @@ function signOut()
 
 function checkLocation()
 {
-    alert("HELLO");
     navigator.geolocation.getCurrentPosition(
         function(posi)
         {
@@ -56,8 +55,12 @@ function checkLocation()
             document.querySelector("#out").disabled = false;
             dist = (distance(pos[0], pos[1], target[0], target[1]));
             local = posi;
-	    alert(pos[0]);
-        }
+        },
+	function(err)
+	{
+	    alert(err);
+	},
+	{timeout:10000}
     );
 }
 
