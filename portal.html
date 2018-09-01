@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign In Portal</title>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyC4C1V4T_L_01Ez6eB83zbqWv95BCLT4tM",
+          authDomain: "punchcard-c3e2a.firebaseapp.com",
+          databaseURL: "https://punchcard-c3e2a.firebaseio.com",
+           projectId: "punchcard-c3e2a",
+          storageBucket: "punchcard-c3e2a.appspot.com",
+          messagingSenderId: "1098588390934"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <script>
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        var uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    localStorage.setItem("username", authResult.user.displayName);
+                    location.href = "./index.html";
+                },
+                uiShown: function() {
+                  // The widget is rendered.
+                  // Hide the loader.
+                  document.getElementById('loader').style.display = 'none';
+                }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'popup',
+            signInSuccessUrl: 'index.html',
+            signInOptions: [
+              // Leave the lines as is for the providers you want to offer your users.
+              firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            ]
+        };
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div></div>
+    <div>
+        <h1>Welcome to 1559 Punch Card</h1>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+    </div>
+</body>
+</html>
