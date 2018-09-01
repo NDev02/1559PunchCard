@@ -3,7 +3,6 @@ var target = [42.992217, -77.416165];
 // var pos = [42.992028, -77.415898];
 var dist;
 var local;
-checkLocation();
 
 function signIn() 
 {
@@ -46,20 +45,24 @@ function checkLocation()
     navigator.geolocation.getCurrentPosition(
         function(posi)
         {
-            console.log(posi);
+            //console.log(posi);
             if(window["pos"] == undefined)
+	    {
                 window["pos"] = [posi.coords.latitude, posi.coords.longitude];
+	    }
             document.querySelector("#sync").hidden = true;
             document.querySelector("#in").disabled = false;
             document.querySelector("#out").disabled = false;
             dist = (distance(pos[0], pos[1], target[0], target[1]));
             local = posi;
+	    alert(pos[0]);
         }
     );
 }
 
 window.onload = function()
 {
+    checkLocation();
     document.querySelector("#last-login").innerHTML = localStorage.getItem("lastLogin") || "Unknown";
     var date = new Date(Date());
     var dateStr = `${date.getMonth()}-${date.getDay()}-${date.getFullYear()}`;
