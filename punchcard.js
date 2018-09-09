@@ -33,6 +33,7 @@ function signOut()
 {
     var date = new Date(Date());
     var dateStr = `${date.getMonth()}-${date.getDay()}-${date.getFullYear()}`;
+	alert(dateStr);
     var timeStr = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     firebase.database().ref(`/${localStorage.getItem("username").replace(/ /g, "_").replace(/'/g, "")}/${dateStr}/out`).set(timeStr, function()
     {
