@@ -17,7 +17,7 @@ function signIn()
     }
     else
     {
-        var date = new Date(Date());
+        var date = new Date();
         var dateStr = `${date.getMonth()}-${date.getDay()}-${date.getFullYear()}`;
         var timeStr = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
         localStorage.setItem("lastLogin", dateStr);
